@@ -24,7 +24,7 @@ public class baseSetup {
   }
 
   public static void setup(String browser, String url) {
-    baseSetup.getDriver(browser);
+    WebDriver driver = baseSetup.getDriver(browser);
     driver.get(url);
     driver.manage().window().maximize();
   }
