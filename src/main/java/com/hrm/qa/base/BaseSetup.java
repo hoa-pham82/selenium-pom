@@ -7,18 +7,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class baseSetup {
+public class BaseSetup {
 
   private static WebDriver driver;
   static Properties prop;
-  static String FILE_CONFIG = "\\config.properties";
+  static String FILE_CONFIG_PATH = "/src/main/java/com/hrm/qa/config/config.properties";
 
-  public void TestBase() {
+  public BaseSetup() {
     try {
       prop = new Properties();
       String currentDir = System.getProperty("user.dir");
 
-      FileInputStream ip = new FileInputStream(currentDir + FILE_CONFIG);
+      FileInputStream ip = new FileInputStream(currentDir + FILE_CONFIG_PATH);
       prop.load(ip);
     } catch (IOException e) {
       e.printStackTrace();
@@ -42,7 +42,7 @@ public class baseSetup {
   }
 
   public static void setup(String browser, String url) {
-    WebDriver driver = baseSetup.getDriver(browser);
+    WebDriver driver = BaseSetup.getDriver(browser);
     driver.get(url);
     driver.manage().window().maximize();
   }
