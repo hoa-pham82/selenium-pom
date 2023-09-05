@@ -1,5 +1,7 @@
 package com.hrm.qa.pages;
 
-public class AdminPage {
+import com.hrm.qa.base.BaseSetup;
+
+public class AdminPage extends BaseSetup {
 
 }

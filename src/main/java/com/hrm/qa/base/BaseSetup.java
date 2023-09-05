@@ -3,7 +3,6 @@ package com.hrm.qa.base;
 import com.hrm.qa.util.TestUtil;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseSetup {
 
-  static WebDriver driver;
+  public static WebDriver driver;
   static Properties prop;
   static String FILE_CONFIG_PATH = "/src/main/java/com/hrm/qa/config/config.properties";
 

@@ -1,5 +1,7 @@
 package com.hrm.qa.pages;
 
-public class DashboardPage {
+import com.hrm.qa.base.BaseSetup;
+
+public class DashboardPage extends BaseSetup {
 
 }
