@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BaseSetup {
 
   public static WebDriver driver;
-  static Properties prop;
+  public static Properties prop;
   static String FILE_CONFIG_PATH = "/src/main/java/com/hrm/qa/config/config.properties";
 
   public BaseSetup() {
@@ -39,6 +39,7 @@ public class BaseSetup {
     driver.manage().window().maximize();
     driver.manage().deleteAllCookies();
     driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT);
+    driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICITLY_WAIT);
 
     driver.get(prop.getProperty("url"));
   }

@@ -23,10 +23,11 @@ public class LoginPage extends BaseSetup {
     return driver.getTitle();
   }
 
-  public void login(String username, String password) {
+  public DashboardPage login(String username, String password) {
     this.username.sendKeys(username);
     this.password.sendKeys(password);
     this.submitButton.click();
+    return new DashboardPage();
   }
 
 
