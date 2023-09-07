@@ -33,6 +33,9 @@ public class LoginTest extends BaseSetup {
   @Test
   public void verifyLoginSuccessfully() {
     dashboardPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+    boolean dashBoardHeader = dashboardPage.verifyDashBoardHeader();
+    Assert.assertTrue(dashBoardHeader);
+
   }
 
   @AfterClass
