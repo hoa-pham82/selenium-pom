@@ -20,7 +20,7 @@ public class TestUtil {
     MAINTENANCE("Maintenance"),
     CLAIM("Claim"),
     BUZZ("Buzz");
-    final String value;
+    public final String value;
 
     PageTitle(String value) {
       this.value = value;

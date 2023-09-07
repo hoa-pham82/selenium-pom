@@ -22,8 +22,16 @@ public class DashboardPage extends BaseSetup {
     return this.dashBoardHeader.isDisplayed();
   }
 
-  public void navigateToPage(String title) {
+  public BaseSetup navigateToPage(String title) {
     this.title.findElement(By.xpath(String.format("//*[text()='%s']", title)));
+    switch (title) {
+      case "Admin":
+        return new AdminPage();
+      case "Recruitment":
+        return new RecruitmentPage();
+      default:
+        return null;
+    }
   }
 
 }
