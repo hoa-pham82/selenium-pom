@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="HRM Application Automation Test Suite">
+
+  <!--  <listeners>-->
+  <!--    <listener class-name="com.qa.ExtentReportListener.ExtentReporterNG" />-->
+  <!--  </listeners>-->
+
+
+  <test name="HRM Application Test Cases">
+    <classes>
+      <class name="com.hrm.qa.testcases.AdminTest"></class>
+      <class name="com.hrm.qa.testcases.DashboardTest"></class>
+      <class name="com.hrm.qa.testcases.LoginTest"></class>
+    </classes>
+  </test>
+</suite>
