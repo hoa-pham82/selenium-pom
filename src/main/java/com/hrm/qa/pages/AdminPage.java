@@ -7,9 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AdminPage extends BaseSetup {
 
-  @FindBy(xpath = "//h6[text()='Admin']")
-  WebElement adminPageHeader;
-
   @FindBy(xpath = "//label[text()='Username']/parent::div/following-sibling::div/input")
   WebElement userSearchBox;
 
@@ -18,10 +15,6 @@ public class AdminPage extends BaseSetup {
 
   public AdminPage() {
     PageFactory.initElements(driver, this);
-  }
-
-  public boolean verifyAdminHeaderIsDisplayed() {
-    return this.adminPageHeader.isDisplayed();
   }
 
   public void searchUserByName(String name) {

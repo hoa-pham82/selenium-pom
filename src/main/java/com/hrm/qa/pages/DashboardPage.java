@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DashboardPage extends BaseSetup {
 
-  @FindBy(xpath = "//h6[text()='Dashboard']")
-  WebElement dashBoardHeader;
 
   @FindBy(xpath = "//a")
   WebElement title;
@@ -18,9 +16,6 @@ public class DashboardPage extends BaseSetup {
     PageFactory.initElements(driver, this);
   }
 
-  public boolean verifyDashBoardHeaderIsDisplayed() {
-    return this.dashBoardHeader.isDisplayed();
-  }
 
   public <Any> Any navigateToPage(String title) {
     this.title.findElement(By.xpath(String.format("//*[text()='%s']", title))).click();

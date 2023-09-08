@@ -4,6 +4,7 @@ import com.hrm.qa.util.TestUtil;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -42,6 +43,10 @@ public class BaseSetup {
     driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICITLY_WAIT);
 
     driver.get(prop.getProperty("url"));
+  }
+
+  public boolean verifyPageHeaderIsDisplayed(String page) {
+    return driver.findElement(By.xpath(String.format("//h6[text()='%s']", page))).isDisplayed();
   }
 
 
