@@ -32,15 +32,15 @@ public class DashboardTest extends BaseSetup {
 
   @Test
   public void verifyToNavigateToAdminPage() {
-    adminPage = dashboardPage.navigateToPage(PageTitle.ADMIN.value);
-    boolean isDisplayed = adminPage.verifyAdminHeaderIsDisplayed();
+    dashboardPage.navigateToPage(PageTitle.ADMIN.value);
+    boolean isDisplayed = verifyPageHeaderIsDisplayed(PageTitle.ADMIN.value);
     Assert.assertTrue(isDisplayed, "The admin page header is not displayed!");
   }
 
   @Test
   public void verifyToNavigateToRecruitmentPage() {
-    recruitmentPage = dashboardPage.navigateToPage(PageTitle.RECRUITMENT.value);
-    boolean isDisplayed = recruitmentPage.verifyRecruitmentHeaderIsDisplayed();
+    dashboardPage.navigateToPage(PageTitle.RECRUITMENT.value);
+    boolean isDisplayed = verifyPageHeaderIsDisplayed(PageTitle.RECRUITMENT.value);
     Assert.assertTrue(isDisplayed, "The recruitment page header is not displayed");
   }
 

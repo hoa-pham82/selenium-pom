@@ -3,6 +3,7 @@ package com.hrm.qa.testcases;
 import com.hrm.qa.base.BaseSetup;
 import com.hrm.qa.pages.DashboardPage;
 import com.hrm.qa.pages.LoginPage;
+import com.hrm.qa.util.TestUtil.PageTitle;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -33,7 +34,7 @@ public class LoginTest extends BaseSetup {
   @Test
   public void verifyLoginSuccessfully() {
     dashboardPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
-    boolean isDashBoardHeaderDisplayed = dashboardPage.verifyDashBoardHeaderIsDisplayed();
+    boolean isDashBoardHeaderDisplayed = verifyPageHeaderIsDisplayed(PageTitle.DASHBOARD.value);
     Assert.assertTrue(isDashBoardHeaderDisplayed);
 
   }
