@@ -18,17 +18,17 @@ public class DashboardPage extends BaseSetup {
     PageFactory.initElements(driver, this);
   }
 
-  public boolean verifyDashBoardHeader() {
+  public boolean verifyDashBoardHeaderIsDisplayed() {
     return this.dashBoardHeader.isDisplayed();
   }
 
-  public BaseSetup navigateToPage(String title) {
-    this.title.findElement(By.xpath(String.format("//*[text()='%s']", title)));
+  public <Any> Any navigateToPage(String title) {
+    this.title.findElement(By.xpath(String.format("//*[text()='%s']", title))).click();
     switch (title) {
       case "Admin":
-        return new AdminPage();
+        return (Any) new AdminPage();
       case "Recruitment":
-        return new RecruitmentPage();
+        return (Any) new RecruitmentPage();
       default:
         return null;
     }
