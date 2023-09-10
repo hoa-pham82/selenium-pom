@@ -5,7 +5,7 @@
 .idea/
 /target/
 
-
+/test-output
 # Log file
 *.log
 
