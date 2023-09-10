@@ -35,7 +35,6 @@ public class AdminPage extends BaseSetup {
     }
   }
 
-
   public AdminPage() {
     PageFactory.initElements(driver, this);
   }
@@ -45,13 +44,29 @@ public class AdminPage extends BaseSetup {
     this.searchBtn.click();
   }
 
+  public void addNewUser() {
+    this.addUserBtn.click();
+  }
+
+  public void saveNewUser() {
+    this.saveUserBtn.click();
+  }
+
+  public boolean verifyAddUserPageTitle() {
+    return this.addUserTitle.isDisplayed();
+  }
+
   public void typeToField(String fieldLabel, String content) {
     driver.findElement(
             By.xpath(String.format("//*[text()[contains(.,'%s')]]/following::input[1]", fieldLabel)))
         .sendKeys(content);
+    if (fieldLabel.equals("Employee Name")) {
+      driver.findElement(
+          By.xpath("//*[@role='option' and span/text()[contains(., '" + content + "')]]")).click();
+    }
   }
 
-  public void selectByLabel(String label, String option) {
+  public void selectOptionByLabel(String label, String option) {
     WebElement el = driver.findElement(
         By.xpath(String.format("//*[text()[contains(., '%s')]]", label)));
     el.findElement(By.xpath(".//div[@role='option' and span/text()='" + option + "']")).click();
