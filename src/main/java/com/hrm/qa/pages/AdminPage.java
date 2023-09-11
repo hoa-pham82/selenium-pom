@@ -67,9 +67,12 @@ public class AdminPage extends BaseSetup {
   }
 
   public void selectOptionByLabel(String label, String option) {
-    WebElement el = driver.findElement(
-        By.xpath(String.format("//*[text()[contains(., '%s')]]", label)));
-    el.findElement(By.xpath(".//div[@role='option' and span/text()='" + option + "']")).click();
+    driver.findElement(
+        By.xpath(String.format(
+            "//*[text()[contains(., '%s')]]/following::div[@class='oxd-select-text-input']",
+            label))).click();
+    driver.findElement(
+        By.xpath(".//*[@role='option' and span/text()[contains(., '" + option + "')]]")).click();
   }
 
 
