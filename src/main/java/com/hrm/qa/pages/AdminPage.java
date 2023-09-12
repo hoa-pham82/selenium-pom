@@ -44,14 +44,6 @@ public class AdminPage extends BaseSetup {
     this.searchBtn.click();
   }
 
-  public void addNewUser() {
-    this.addUserBtn.click();
-  }
-
-  public void saveNewUser() {
-    this.saveUserBtn.click();
-  }
-
   public boolean verifyAddUserPageTitle() {
     return this.addUserTitle.isDisplayed();
   }
@@ -75,5 +67,22 @@ public class AdminPage extends BaseSetup {
         By.xpath(".//*[@role='option' and span/text()[contains(., '" + option + "')]]")).click();
   }
 
+  public void clickToAddUser() {
+    this.addUserBtn.click();
+  }
 
+  public void addNewUser(String userRole, String employeeName, String status,
+      String userName, String password, String confirmPassword) {
+
+    selectOptionByLabel(AddUserLabel.USER_ROLE.label, userRole);
+    typeToField(AddUserLabel.EMPLOYEE_NAME.label, employeeName);
+    selectOptionByLabel(AddUserLabel.STATUS.label, status);
+    typeToField(AddUserLabel.USERNAME.label, userName);
+    typeToField(AddUserLabel.PASSWORD.label, password);
+    typeToField(AddUserLabel.CONFIRM_PASSWORD.label, confirmPassword);
+
+    this.saveUserBtn.click();
+
+  }
+  
 }
