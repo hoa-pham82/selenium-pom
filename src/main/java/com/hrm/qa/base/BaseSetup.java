@@ -1,5 +1,7 @@
 package com.hrm.qa.base;
 
+import static com.hrm.qa.util.TestUtil.USER_ROOT;
+
 import com.hrm.qa.util.TestUtil;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,9 +20,8 @@ public class BaseSetup {
   public BaseSetup() {
     try {
       prop = new Properties();
-      String currentDir = System.getProperty("user.dir");
 
-      FileInputStream ip = new FileInputStream(currentDir + FILE_CONFIG_PATH);
+      FileInputStream ip = new FileInputStream(USER_ROOT + FILE_CONFIG_PATH);
       prop.load(ip);
 
     } catch (IOException e) {
