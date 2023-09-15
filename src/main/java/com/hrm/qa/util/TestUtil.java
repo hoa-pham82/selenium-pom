@@ -1,6 +1,5 @@
 package com.hrm.qa.util;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -23,8 +22,8 @@ public class TestUtil {
       FileInputStream file = new FileInputStream(filePath);
       XSSFWorkbook workbook = new XSSFWorkbook(file);
       XSSFSheet sheet = workbook.getSheet(sheetName);
-      
-      data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
+
+      data = new Object[sheet.getLastRowNum() + 1][sheet.getRow(0).getLastCellNum()];
 
       Iterator<Row> rowIterator = sheet.iterator();
       int rowIndex = 0;
