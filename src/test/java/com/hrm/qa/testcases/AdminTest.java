@@ -9,8 +9,8 @@ import com.hrm.qa.pages.LoginPage;
 import com.hrm.qa.util.TestUtil;
 import com.hrm.qa.util.TestUtil.PageTitle;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,7 +25,7 @@ public class AdminTest extends BaseSetup {
     super();
   }
 
-  @BeforeClass
+  @BeforeMethod
   public void setup() {
     initialization();
     LoginPage loginPage = new LoginPage();
@@ -33,7 +33,7 @@ public class AdminTest extends BaseSetup {
     adminPage = dashboardPage.navigateToPage(PageTitle.ADMIN.value);
   }
 
-  @Test(priority = 2, enabled = false)
+  @Test(enabled = false)
   public void verifyAdminPageHeader() {
     Assert.assertTrue(verifyPageHeaderIsDisplayed(PageTitle.ADMIN.value),
         "The admin page header is not displayed!");
@@ -52,8 +52,7 @@ public class AdminTest extends BaseSetup {
     return TestUtil.getDataFromFile(filePath, sheetName);
   }
 
-
-  @AfterClass
+  @AfterMethod
   public void teardown() {
     driver.quit();
   }

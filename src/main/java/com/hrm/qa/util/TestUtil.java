@@ -29,14 +29,17 @@ public class TestUtil {
       int rowIndex = 0;
       while (rowIterator.hasNext()) {
         Row row = rowIterator.next();
-        Iterator<Cell> cellIterator = row.cellIterator();
-        int colIndex = 0;
-        while (cellIterator.hasNext()) {
-          Cell cell = cellIterator.next();
-          data[rowIndex][colIndex] = cell.toString();
-          colIndex += 1;
+        int rowNum = row.getRowNum();
+        if (rowNum != 0) {
+          Iterator<Cell> cellIterator = row.cellIterator();
+          int colIndex = 0;
+          while (cellIterator.hasNext()) {
+            Cell cell = cellIterator.next();
+            data[rowIndex][colIndex] = cell.toString();
+            colIndex += 1;
+          }
+          rowIndex += 1;
         }
-        rowIndex += 1;
       }
       file.close();
       return data;
