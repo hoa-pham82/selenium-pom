@@ -23,7 +23,7 @@ public class TestUtil {
       XSSFWorkbook workbook = new XSSFWorkbook(file);
       XSSFSheet sheet = workbook.getSheet(sheetName);
 
-      data = new Object[sheet.getLastRowNum() + 1][sheet.getRow(0).getLastCellNum()];
+      data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
 
       Iterator<Row> rowIterator = sheet.iterator();
       int rowIndex = 0;
