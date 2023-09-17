@@ -1,5 +1,6 @@
 package com.hrm.qa.util;
 
+import com.github.javafaker.Faker;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -14,6 +15,7 @@ public class TestUtil {
   public static Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(20);
   public static Duration IMPLICITLY_WAIT = Duration.ofSeconds(10);
   public static String USER_ROOT = System.getProperty("user.dir");
+  public static String random = getRandomName();
 
   public static Object[][] getDataFromFile(String filePath, String sheetName) {
     Object[][] data;
@@ -35,8 +37,14 @@ public class TestUtil {
           int colIndex = 0;
           while (cellIterator.hasNext()) {
             Cell cell = cellIterator.next();
-            data[rowIndex][colIndex] = cell.toString();
-            colIndex += 1;
+            if (colIndex == 3) {
+              data[rowIndex][colIndex] = cell.toString() + random;
+              colIndex += 1;
+            } else {
+              data[rowIndex][colIndex] = cell.toString();
+              colIndex += 1;
+            }
+
           }
           rowIndex += 1;
         }
@@ -69,7 +77,8 @@ public class TestUtil {
     }
   }
 
-  // Create the method to get data from Excel file
-
-
+  public static String getRandomName() {
+    Faker faker = new Faker();
+    return faker.name().lastName();
+  }
 }
