@@ -84,7 +84,7 @@ public class TestUtil {
 
   public static String getRandomName() {
     Faker faker = new Faker();
-    return faker.name().lastName();
+    return faker.name().lastName().replace("'", "");
   }
 
   public static void waitForElementTobeVisible(WebDriver driver, By element, Duration timeout) {

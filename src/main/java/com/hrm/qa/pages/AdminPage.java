@@ -80,14 +80,13 @@ public class AdminPage extends BaseSetup {
   }
 
   public void addNewUser(String userRole, String employeeName, String status,
-      String userName, String password, String confirmPassword) throws InterruptedException {
+      String userName, String password, String confirmPassword) {
 
     selectOptionByLabel(AddUserLabel.USER_ROLE.label, userRole);
     typeToField(AddUserLabel.EMPLOYEE_NAME.label, employeeName);
     selectOptionByLabel(AddUserLabel.STATUS.label, status);
     typeToField(AddUserLabel.USERNAME.label, userName);
     typeToField(AddUserLabel.PASSWORD.label, password);
-    Thread.sleep(2000);
     typeToField(AddUserLabel.CONFIRM_PASSWORD.label, confirmPassword);
 
     this.saveUserBtn.click();

@@ -42,9 +42,12 @@ public class AdminTest extends BaseSetup {
   @Test(priority = 1, dataProvider = "getHRMTestData")
   public void verifyAddUserSuccessfully(String userRole, String employeeName, String status,
       String userName, String password, String confirmPassword) throws InterruptedException {
+
     adminPage.clickToAddUser();
+    
     Assert.assertTrue(adminPage.verifyAddUserPageTitle(), "Add user page title is not displayed!");
     adminPage.addNewUser(userRole, employeeName, status, userName, password, confirmPassword);
+
     adminPage.searchUserByName(userName);
     Assert.assertTrue(adminPage.getRecordsFoundByText(userName).isDisplayed());
   }
