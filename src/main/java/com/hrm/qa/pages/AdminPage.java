@@ -8,9 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AdminPage extends BaseSetup {
 
-  @FindBy(xpath = "//label[text()='Username']/parent::div/following-sibling::div/input")
-  WebElement userSearchBox;
-
+  By userSearchBox = By.xpath(
+      "//label[text()='Username']/following::div/input[@class='oxd-input oxd-input--active']");
   @FindBy(xpath = "//*[@type='submit']")
   WebElement searchBtn;
 
@@ -39,9 +38,18 @@ public class AdminPage extends BaseSetup {
     PageFactory.initElements(driver, this);
   }
 
-  public void searchUserByName(String name) {
-    this.userSearchBox.sendKeys(name);
+  public void searchUserByName(String name) throws InterruptedException {
+    /*
+    Can't use explicit wait because the username and userSearchBox element are duplicated
+    TestUtil.waitForElementTobeVisible(driver, userSearchBox, EXPLICIT_WAIT);
+*/
+    Thread.sleep(10000);
+    driver.findElement(userSearchBox).sendKeys(name);
     this.searchBtn.click();
+  }
+
+  public WebElement getRecordsFoundByText(String text) {
+    return driver.findElement(By.xpath("//*[text()='" + text + "']"));
   }
 
   public boolean verifyAddUserPageTitle() {
@@ -72,17 +80,18 @@ public class AdminPage extends BaseSetup {
   }
 
   public void addNewUser(String userRole, String employeeName, String status,
-      String userName, String password, String confirmPassword) {
+      String userName, String password, String confirmPassword) throws InterruptedException {
 
     selectOptionByLabel(AddUserLabel.USER_ROLE.label, userRole);
     typeToField(AddUserLabel.EMPLOYEE_NAME.label, employeeName);
     selectOptionByLabel(AddUserLabel.STATUS.label, status);
     typeToField(AddUserLabel.USERNAME.label, userName);
     typeToField(AddUserLabel.PASSWORD.label, password);
+    Thread.sleep(2000);
     typeToField(AddUserLabel.CONFIRM_PASSWORD.label, confirmPassword);
 
     this.saveUserBtn.click();
 
   }
-  
+
 }

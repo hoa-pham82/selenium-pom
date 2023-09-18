@@ -9,11 +9,16 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestUtil {
 
   public static Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(20);
   public static Duration IMPLICITLY_WAIT = Duration.ofSeconds(10);
+  public static Duration EXPLICIT_WAIT = Duration.ofSeconds(10);
   public static String USER_ROOT = System.getProperty("user.dir");
   public static String random = getRandomName();
 
@@ -80,5 +85,10 @@ public class TestUtil {
   public static String getRandomName() {
     Faker faker = new Faker();
     return faker.name().lastName();
+  }
+
+  public static void waitForElementTobeVisible(WebDriver driver, By element, Duration timeout) {
+    WebDriverWait wait = new WebDriverWait(driver, timeout);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(element));
   }
 }
